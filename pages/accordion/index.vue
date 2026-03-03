@@ -43,4 +43,16 @@
 .accWrap {
     margin-top: -140px;
 }
+
+@media (max-width: 800px) {
+    .accWrap {
+        margin: -60px 20px auto;
+    }
+}
+
+@media (max-width: 550px) {
+    .accWrap {
+        margin: 10px 20px auto;
+    }
+}
 </style>

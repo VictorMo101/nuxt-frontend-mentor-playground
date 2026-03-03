@@ -43,16 +43,4 @@ defineProps({
     font-style: normal;
     font-size: 26px;
 }
-
-@media (max-width: 800px) {
-    .faqWrapper {
-        margin: -60px auto auto;
-    }
-}
-
-@media (max-width: 550px) {
-    .faqWrapper {
-        margin: -20px auto auto;
-    }
-}
 </style>

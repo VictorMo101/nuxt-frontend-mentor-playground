@@ -56,7 +56,7 @@ padding-top: 20px;
         font-family: "Work Sans", sans-serif;
         font-optical-sizing: auto;
         font-style: normal;
-        max-width: 550px;
+        max-width: 70%;
         width: 100%;
         transition: color 200ms ease-in-out;
     }
