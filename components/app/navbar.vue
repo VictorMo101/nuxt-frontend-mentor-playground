@@ -1,8 +1,8 @@
 <template>
     <div class="headerWrap">
-        <a href="/"><p>home</p></a>
-        <a href="/accordion"><p>accordion</p></a>
-        <a href="/newsletter"><p>newsletter</p></a>
+        <NuxtLink href="/"><p>home</p></NuxtLink>
+        <NuxtLink href="/accordion"><p>accordion</p></NuxtLink>
+        <NuxtLink href="/newsletter"><p>newsletter</p></NuxtLink>
     </div>
 </template>
 
