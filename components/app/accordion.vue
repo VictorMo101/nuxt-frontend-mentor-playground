@@ -22,16 +22,14 @@ const onClick = () => {
 <div class="accordionWrapper">
     <div class="clickWrap" @click="onClick()" >
         <h2>{{ title }}</h2>
-        <Transition>
+        <Transition name="fade">
             <img v-if="!closed" src="/assets/images/icon-plus.svg" alt="">
             <img v-else src="/assets/images/icon-minus.svg" alt="">
         </Transition>
-    </div>
-    <Transition>
-        <div class="textWrap" v-if="closed">
-            <p>{{ content }}</p>
         </div>
-    </Transition>
+        <div class="textWrap" :class="{ open: closed }">
+            <div class="inner"><p>{{ content }}</p></div>
+        </div>
 </div>
 </template>
 
@@ -73,7 +71,9 @@ padding-top: 20px;
 }
 
 .textWrap {
-    padding-block: 10px;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-in-out; 
     p {
         font-family: "Work Sans", sans-serif;
         font-optical-sizing: auto;
@@ -86,13 +86,21 @@ padding-top: 20px;
     }
 }
 
-.v-enter-active,
-.v-leave-active {
+.inner {
+    overflow: hidden;
+}
+
+.textWrap.open {
+grid-template-rows: 1fr;
+}
+
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
