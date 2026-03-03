@@ -2,6 +2,7 @@
     <div class="headerWrap">
         <a href="/"><p>home</p></a>
         <a href="/accordion"><p>accordion</p></a>
+        <a href="/newsletter"><p>newsletter</p></a>
     </div>
 </template>
 
