@@ -36,14 +36,12 @@ defineProps({
     display: flex;
     margin: 20px 0 20px 20px;
     gap: 20px;
-}
 
-.h1wrap h1 {
     font-family: "Work Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    font-size: 48px;
+    font-size: 26px;
 }
 
 @media (max-width: 800px) {

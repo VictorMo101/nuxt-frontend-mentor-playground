@@ -58,12 +58,18 @@ padding-top: 20px;
         font-style: normal;
         max-width: 550px;
         width: 100%;
+        transition: color 200ms ease-in-out;
     }
+
     img {
         position: absolute;
         right: 40px;
         
     }
+}
+
+.clickWrap:hover {
+    h2{color: hsl(292, 16%, 49%);}
 }
 
 .textWrap {
