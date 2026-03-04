@@ -72,6 +72,8 @@ li {
 }
 
 .newsWrapper {
+    transform:scale(80%);
+
     width: 100%;
     max-width: 1000px;
     background-color: #fff;
