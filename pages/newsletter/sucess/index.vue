@@ -1,6 +1,6 @@
 <script setup>
 const route = useRoute();
-const email = computed(() => route.query.email || '');
+const email = computed(() => route.query.email || "");
 </script>
 
 <template>
@@ -10,7 +10,9 @@ const email = computed(() => route.query.email || '');
                 <img src="/assets/images/icon-success.svg" alt="aba">
                 <h1>Thanks for subscribing!</h1>
                 <p>A confirmation mail has been sent to <strong>{{ email }}</strong>. Please open it and click the button inside to confirm your subscription.</p>
-                <NuxtLink href="/"><button>Dismiss message</button></NuxtLink>
+                <NuxtLink href="/">
+                    <button>Dismiss message</button>
+                </NuxtLink>
             </div>
         </div>
     </div>
@@ -51,9 +53,20 @@ li {
             }
 
             h1 {
-                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    Oxygen,
+                    Ubuntu,
+                    Cantarell,
+                    "Open Sans",
+                    "Helvetica Neue",
+                    sans-serif;
                 font-size: 55px;
-                color:hsl(234, 29%, 20%);
+                color: hsl(234, 29%, 20%);
                 margin-top: 24px;
             }
 
@@ -98,14 +111,14 @@ li {
         margin: 40px 24px;
     }
 
-.wrapper .thanksWrap .elements h1 {
-    font-size: 40px;
-    line-height: 1.1;
-    margin-top: 20px;
-    hyphens: auto; 
-    word-wrap: break-word; 
-    max-width: 100%; 
-}
+    .wrapper .thanksWrap .elements h1 {
+        font-size: 40px;
+        line-height: 1.1;
+        margin-top: 20px;
+        hyphens: auto;
+        word-wrap: break-word;
+        max-width: 100%;
+    }
 
     .wrapper .thanksWrap .elements p {
         font-size: 14px;

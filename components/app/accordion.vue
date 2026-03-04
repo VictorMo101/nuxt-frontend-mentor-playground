@@ -1,43 +1,53 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 defineProps({
-  title: {
-    type: String,
-    required: true
-  },
-  content: {
-    type: String,
-    default: ''
-  }
-})
+    title: {
+        type: String,
+        required: true,
+    },
+    content: {
+        type: String,
+        default: "",
+    },
+});
 
-let closed = ref(false);
-const onClick = () => {
+const closed = ref(false);
+function onClick() {
     closed.value = !closed.value;
 }
 </script>
 
 <template>
-<div class="accordionWrapper">
-    <div class="clickWrap" @click="onClick()" >
-        <h2>{{ title }}</h2>
-        <Transition name="fade">
-            <img v-if="!closed" src="/assets/images/icon-plus.svg" alt="">
-            <img v-else src="/assets/images/icon-minus.svg" alt="">
-        </Transition>
+    <div class="accordionWrapper">
+        <div class="clickWrap" @click="onClick()">
+            <h2>{{ title }}</h2>
+            <Transition name="fade">
+                <img
+                    v-if="!closed"
+                    src="/assets/images/icon-plus.svg"
+                    alt=""
+                >
+                <img
+                    v-else
+                    src="/assets/images/icon-minus.svg"
+                    alt=""
+                >
+            </Transition>
         </div>
         <div class="textWrap" :class="{ open: closed }">
-            <div class="inner"><p>{{ content }}</p></div>
+            <div class="inner">
+                <p>{{ content }}</p>
+            </div>
         </div>
-</div>
+    </div>
 </template>
 
 <style scoped>
 .accordionWrapper {
-margin-inline: 20px;
-border-bottom: 1px solid hsl(275, 100%, 97%);
-padding-top: 20px;
+    margin-inline: 20px;
+    border-bottom: 1px solid hsl(275, 100%, 97%);
+    padding-top: 20px;
 }
 
 .clickWrap {
@@ -62,18 +72,19 @@ padding-top: 20px;
     img {
         position: absolute;
         right: 40px;
-        
     }
 }
 
 .clickWrap:hover {
-    h2{color: hsl(292, 16%, 49%);}
+    h2 {
+        color: hsl(292, 16%, 49%);
+    }
 }
 
 .textWrap {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 0.5s ease-out; 
+    transition: grid-template-rows 0.5s ease-out;
     p {
         font-family: "Work Sans", sans-serif;
         font-optical-sizing: auto;
@@ -91,16 +102,16 @@ padding-top: 20px;
 }
 
 .textWrap.open {
-grid-template-rows: 1fr;
+    grid-template-rows: 1fr;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0;
+    opacity: 0;
 }
 </style>

@@ -1,21 +1,23 @@
 <script setup>
 defineProps({
-  posts: {
-    type: Array,
-    default: () => []
-  }
+    posts: {
+        type: Array,
+        default: () => [],
+    },
 });
 </script>
 
 <template>
     <div class="faqWrapper">
-        <div class="h1wrap"><img src="/assets/images/icon-star.svg" alt=""><h1>FAQs</h1></div>
-            <AppAccordion 
-                v-for="post in posts.length ? posts : defaultPosts"
-                :key="post.id"
-                :title="post.title" 
-                :content="post.content"
-            />
+        <div class="h1wrap">
+            <img src="/assets/images/icon-star.svg" alt=""><h1>FAQs</h1>
+        </div>
+        <AppAccordion
+            v-for="post in posts.length ? posts : defaultPosts"
+            :key="post.id"
+            :title="post.title"
+            :content="post.content"
+        />
     </div>
 </template>
 

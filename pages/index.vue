@@ -1,12 +1,12 @@
 <template>
-<div class="wrapper">
-    <div class="welcome">
-        <div class="elements">
-            <h1>Welcome</h1>
-            <p>Here i am making random things.</p>
+    <div class="wrapper">
+        <div class="welcome">
+            <div class="elements">
+                <h1>Welcome</h1>
+                <p>Here i am making random things.</p>
+            </div>
         </div>
     </div>
-</div>
 </template>
 
 <style scoped>
@@ -34,12 +34,12 @@
     text-align: center;
     h1 {
         font-size: 55px;
-        color:hsl(234, 29%, 20%);
+        color: hsl(234, 29%, 20%);
     }
 
     p {
         margin-top: 24px;
         font-size: 16px;
-}
+    }
 }
 </style>
