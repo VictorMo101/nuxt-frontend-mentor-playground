@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
 const email = ref("");
 const isRequired = ref(false);
 
-const validateForm = (e) => {
+function validateForm(e) {
     if (email.value === "") {
         isRequired.value = true;
         e.preventDefault();
@@ -29,12 +29,25 @@ const validateForm = (e) => {
                     <li>Measuring to ensure updates are a sucess</li>
                     <li>And much more!</li>
                 </ul>
-                <form action="/newsletter/sucess" class="formWrap" @submit="validateForm">
+                <form
+                    action="/newsletter/sucess"
+                    class="formWrap"
+                    @submit="validateForm"
+                >
                     <div class="aboveInput">
                         <label for="email">Email address</label>
-                        <p v-if="isRequired">valid email required</p>
+                        <p v-if="isRequired">
+                            valid email required
+                        </p>
                     </div>
-                    <input v-model="email" type="email" id="email" name="email" placeholder="email@company.com"  :class="{ redRequire: isRequired }">
+                    <input
+                        id="email"
+                        v-model="email"
+                        type="email"
+                        name="email"
+                        placeholder="email@company.com"
+                        :class="{ redRequire: isRequired }"
+                    >
                     <button>Subscribe to monthly newsletter</button>
                 </form>
             </div>
@@ -55,10 +68,10 @@ li {
 }
 
 .redRequire {
-    background-color: #FFE8E6;
-    border: 2px solid #CF908C !important;
-    &::placeholder{
-        color: #CF908C;
+    background-color: #ffe8e6;
+    border: 2px solid #cf908c !important;
+    &::placeholder {
+        color: #cf908c;
     }
 }
 
@@ -86,7 +99,7 @@ li {
     overflow: hidden;
 }
 
-.newsImg {  
+.newsImg {
     grid-column: 8 / span 5;
     grid-row: 1;
     margin: 24px;
@@ -97,7 +110,6 @@ li {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        
     }
 }
 
@@ -124,7 +136,7 @@ li {
             font-size: 16px;
         }
         li::before {
-            content: '';
+            content: "";
             background-image: url(/assets/images/icon-list.svg);
             display: inline-block;
             width: 1em;
@@ -136,7 +148,7 @@ li {
     }
     form {
         margin-top: 24px;
-        
+
         label {
             font-weight: 500;
             font-size: 14px;
@@ -148,7 +160,7 @@ li {
         }
 
         p {
-            color: #CF908C;
+            color: #cf908c;
             font-size: 14px;
             margin-top: 0;
         }
@@ -157,7 +169,7 @@ li {
             margin-top: 8px;
             padding: 18px 0 18px 0;
             border-radius: 8px;
-            border: 2px solid hsl(0, 0%,58%);
+            border: 2px solid hsl(0, 0%, 58%);
             text-indent: 22px;
             font-size: 18px;
         }
@@ -192,7 +204,6 @@ li {
 }
 
 @media (max-width: 768px) {
-
     .wrapper {
         padding: 0;
         align-items: flex-start;
@@ -204,7 +215,7 @@ li {
 
     .newsImg img {
         border-radius: 0 0 16px 16px;
-        content: url('/assets/images/illustration-sign-up-mobile.svg'); /* Switch to mobile img if available */
+        content: url("/assets/images/illustration-sign-up-mobile.svg"); /* Switch to mobile img if available */
     }
 
     .newsForm {

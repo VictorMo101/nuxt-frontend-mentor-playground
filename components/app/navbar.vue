@@ -1,28 +1,41 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-let burgerClosed = ref(false);
+const burgerClosed = ref(false);
 
-const burger = () => {
+function burger() {
     burgerClosed.value = !burgerClosed.value;
 }
-
 </script>
 
 <template>
     <div class="headerWrap">
-        <NuxtLink href="/"><p>home</p></NuxtLink>
-        <NuxtLink href="/accordion"><p>accordion</p></NuxtLink>
-        <NuxtLink href="/newsletter"><p>newsletter</p></NuxtLink>
+        <NuxtLink href="/">
+            <p>home</p>
+        </NuxtLink>
+        <NuxtLink href="/accordion">
+            <p>accordion</p>
+        </NuxtLink>
+        <NuxtLink href="/newsletter">
+            <p>newsletter</p>
+        </NuxtLink>
     </div>
     <div class="mobileHeaderWrap">
-        <button @click="burger"> this is button</button>
+        <button @click="burger">
+            this is button
+        </button>
         <Transition>
-        <div v-if="burgerClosed" class="menuOverlay">
-            <NuxtLink href="/" @click="burger"><p>home</p></NuxtLink>
-            <NuxtLink href="/accordion" @click="burger"><p>accordion</p></NuxtLink>
-            <NuxtLink href="/newsletter" @click="burger"><p>newsletter</p></NuxtLink>
-        </div>
+            <div v-if="burgerClosed" class="menuOverlay">
+                <NuxtLink href="/" @click="burger">
+                    <p>home</p>
+                </NuxtLink>
+                <NuxtLink href="/accordion" @click="burger">
+                    <p>accordion</p>
+                </NuxtLink>
+                <NuxtLink href="/newsletter" @click="burger">
+                    <p>newsletter</p>
+                </NuxtLink>
+            </div>
         </Transition>
     </div>
 </template>
@@ -30,7 +43,7 @@ const burger = () => {
 <style>
 .headerWrap {
     width: 100%;
-    height:0;
+    height: 0;
     display: flex;
 }
 
@@ -51,7 +64,6 @@ const burger = () => {
 }
 
 @media (max-width: 768px) {
-
     .mobileHeaderWrap {
         display: block;
     }
@@ -99,14 +111,14 @@ const burger = () => {
     }
 
     .v-enter-active,
-.v-leave-active {
-  transition: all 0.4s ease;
-}
+    .v-leave-active {
+        transition: all 0.4s ease;
+    }
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-  transform: translateY(-20px);
-}
+    .v-enter-from,
+    .v-leave-to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
 }
 </style>
