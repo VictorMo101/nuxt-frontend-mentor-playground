@@ -1,8 +1,27 @@
+<script setup>
+import { ref } from 'vue';
+
+let burgerClosed = ref(false);
+
+const burger = () => {
+    burgerClosed.value = !burgerClosed.value;
+}
+
+</script>
+
 <template>
     <div class="headerWrap">
         <NuxtLink href="/"><p>home</p></NuxtLink>
         <NuxtLink href="/accordion"><p>accordion</p></NuxtLink>
         <NuxtLink href="/newsletter"><p>newsletter</p></NuxtLink>
+    </div>
+    <div class="mobileHeaderWrap">
+        <button @click="burger"> this is button</button>
+        <div v-if="burgerClosed">
+            <NuxtLink href="/"><p>home</p></NuxtLink>
+            <NuxtLink href="/accordion"><p>accordion</p></NuxtLink>
+            <NuxtLink href="/newsletter"><p>newsletter</p></NuxtLink>
+        </div>
     </div>
 </template>
 
@@ -25,4 +44,17 @@
     transition: all 150ms ease-in-out;
 }
 
+.mobileHeaderWrap {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobileHeaderWrap {
+        display: block;
+    }
+
+    .headerWrap {
+        display: none;
+    }
+}
 </style>

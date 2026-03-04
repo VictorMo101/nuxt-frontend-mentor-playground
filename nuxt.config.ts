@@ -4,4 +4,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   pages: true,
   css: ["./assets/css/main.css"],
+
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en'
+      }
+    }
+  }
 });

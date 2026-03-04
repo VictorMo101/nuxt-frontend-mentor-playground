@@ -37,6 +37,7 @@ li {
     justify-content: center;
 
     .thanksWrap {
+        margin: 20px;
         height: auto;
         width: 500px;
         border-radius: 28px;
@@ -79,6 +80,41 @@ li {
                 }
             }
         }
+    }
+}
+
+@media (max-width: 550px) {
+    .wrapper {
+        padding: 24px;
+    }
+
+    .wrapper .thanksWrap {
+        width: 100%;
+        max-width: 400px;
+        margin: 0;
+    }
+
+    .wrapper .thanksWrap .elements {
+        margin: 40px 24px;
+    }
+
+.wrapper .thanksWrap .elements h1 {
+    font-size: 40px;
+    line-height: 1.1;
+    margin-top: 20px;
+    hyphens: auto; 
+    word-wrap: break-word; 
+    max-width: 100%; 
+}
+
+    .wrapper .thanksWrap .elements p {
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    .wrapper .thanksWrap .elements button {
+        margin-top: 32px;
+        padding: 14px 0;
     }
 }
 </style>

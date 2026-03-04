@@ -64,7 +64,9 @@ li {
 
 .wrapper {
     background-color: hsl(234, 29%, 20%);
+
     height: 100vh;
+    max-height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -72,8 +74,7 @@ li {
 }
 
 .newsWrapper {
-    transform:scale(80%);
-
+    border: 2px solid black;
     width: 100%;
     max-width: 1000px;
     background-color: #fff;
@@ -188,5 +189,32 @@ li {
 .formWrap {
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 768px) {
+
+    .wrapper {
+        padding: 0;
+        align-items: flex-start;
+    }
+    .newsWrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .newsImg img {
+        border-radius: 0 0 16px 16px;
+        content: url('/assets/images/illustration-sign-up-mobile.svg'); /* Switch to mobile img if available */
+    }
+
+    .newsForm {
+        padding: 40px 24px;
+        flex: none;
+        margin: 0;
+    }
+
+    .newsForm h1 {
+        font-size: 40px;
+    }
 }
 </style>
