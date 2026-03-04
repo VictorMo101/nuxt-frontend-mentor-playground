@@ -89,6 +89,9 @@ const burger = () => {
         top: 20px;
         right: 20px;
         z-index: 101;
+        padding: 10px 20px;
+        border-radius: 18px;
+        border: none;
     }
 
     .headerWrap {
