@@ -21,7 +21,7 @@
         <div class="accWrap"><AppAccordionBlock :posts="posts"></AppAccordionBlock></div>
     </div>
 </div>
-<a href="/accordion/labubuacc">go to 2</a>
+<NuxtLink href="/accordion/labubuacc">go to 2</NuxtLink>
 </template>
 
 <style scoped>

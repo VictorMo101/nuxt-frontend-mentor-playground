@@ -73,7 +73,7 @@ padding-top: 20px;
 .textWrap {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 0.5s ease-in-out; 
+    transition: grid-template-rows 0.5s ease-out; 
     p {
         font-family: "Work Sans", sans-serif;
         font-optical-sizing: auto;
