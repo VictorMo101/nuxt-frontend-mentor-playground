@@ -1,3 +1,20 @@
+<script setup>
+import { ref } from 'vue'
+
+const email = ref("");
+const isRequired = ref(false);
+
+const validateForm = (e) => {
+    if (email.value === "") {
+        isRequired.value = true;
+        e.preventDefault();
+        return false;
+    }
+    isRequired.value = false;
+    return true;
+}
+</script>
+
 <template>
     <div class="wrapper">
         <div class="newsWrapper">
@@ -12,9 +29,12 @@
                     <li>Measuring to ensure updates are a sucess</li>
                     <li>And much more!</li>
                 </ul>
-                <form action="/newsletter/sucess" class="formWrap">
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" name="email" placeholder="email@company.com" required   pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
+                <form action="/newsletter/sucess" class="formWrap" @submit="validateForm">
+                    <div class="aboveInput">
+                        <label for="email">Email address</label>
+                        <p v-if="isRequired">valid email required</p>
+                    </div>
+                    <input v-model="email" type="email" id="email" name="email" placeholder="email@company.com"  :class="{ redRequire: isRequired }">
                     <button>Subscribe to monthly newsletter</button>
                 </form>
             </div>
@@ -34,6 +54,14 @@ li {
     font-family: "Work Sans", sans-serif;
 }
 
+.redRequire {
+    background-color: #FFE8E6;
+    border: 2px solid #CF908C !important;
+    &::placeholder{
+        color: #CF908C;
+    }
+}
+
 .wrapper {
     background-color: hsl(234, 29%, 20%);
     height: 100vh;
@@ -44,8 +72,8 @@ li {
 }
 
 .newsWrapper {
-    height: 700px;
-    width: 1200px;
+    width: 100%;
+    max-width: 1000px;
     background-color: #fff;
     border-radius: 28px;
     margin: 20px;
@@ -58,7 +86,6 @@ li {
 .newsImg {  
     grid-column: 8 / span 5;
     grid-row: 1;
-    background-color: red;
     margin: 24px;
     border-radius: 18px;
     overflow: hidden;
@@ -77,13 +104,13 @@ li {
     margin: 100px 70px 100px 70px;
 
     h1 {
-        font-size: 66px;
+        font-size: 62px;
         font-weight: 600;
     }
 
     p {
-        margin-top: 24px;
-        font-size: 20px;
+        margin-top: 22px;
+        font-size: 18px;
     }
 
     ul {
@@ -91,7 +118,7 @@ li {
         li {
             list-style: none;
             margin-top: 12px;
-            font-size: 22px;
+            font-size: 16px;
         }
         li::before {
             content: '';
@@ -109,6 +136,18 @@ li {
         
         label {
             font-weight: 500;
+            font-size: 14px;
+        }
+
+        .aboveInput {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        p {
+            color: #CF908C;
+            font-size: 14px;
+            margin-top: 0;
         }
 
         input {
@@ -148,32 +187,4 @@ li {
     display: flex;
     flex-direction: column;
 }
-
-/* button {
-            margin-top: 24px;
-            padding: 18px 0 18px 0;
-            border-radius: 8px;
-            color: #fff;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-
-            background: linear-gradient(
-                360deg,
-                hsl(342, 100%, 72%) 0%,
-                hsl(4, 100%, 67%) 45%,
-                hsl(234, 29%, 20%) 60%,
-                hsl(234, 29%, 20%) 100%
-            );
-            background-size: 240% 240%;
-            background-position: 100% 0;
-
-            transition: background-position 0.5s ease, box-shadow 0.5s ease;
-
-            &:hover {
-                background-position: 0 100%;
-                box-shadow: 0 8px 20px hsl(4, 100%, 67%, 0.45);
-            }
-        } */
 </style>
