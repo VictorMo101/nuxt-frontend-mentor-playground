@@ -11,13 +11,16 @@ function burger() {
 <template>
     <div class="headerWrap">
         <NuxtLink href="/">
-            <p>home</p>
+            home
         </NuxtLink>
         <NuxtLink href="/accordion">
-            <p>accordion</p>
+            accordion
         </NuxtLink>
         <NuxtLink href="/newsletter">
-            <p>newsletter</p>
+            newsletter
+        </NuxtLink>
+        <NuxtLink href="/conferenceTicket">
+            conference ticket
         </NuxtLink>
     </div>
     <div class="mobileHeaderWrap">
