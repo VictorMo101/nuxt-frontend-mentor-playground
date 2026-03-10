@@ -19,6 +19,9 @@ function burger() {
         <NuxtLink href="/newsletter">
             <p>newsletter</p>
         </NuxtLink>
+        <NuxtLink href="/random">
+            <p>random</p>
+        </NuxtLink>
     </div>
     <div class="mobileHeaderWrap">
         <button @click="burger">
