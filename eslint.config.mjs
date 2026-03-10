@@ -26,7 +26,7 @@ export default withNuxt(antfu({
         }],
         "ts/no-redeclare": "off",
         "ts/consistent-type-definitions": ["error", "type"],
-        "no-console": ["warn"],
+        "no-console": "off",
         "antfu/no-top-level-await": ["off"],
         "node/no-process-env": ["error"],
         "node/prefer-global/process": ["off"],
