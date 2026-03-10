@@ -4,7 +4,16 @@ import { ref } from "vue";
 const avatarPreviewUrl = ref(null);
 const avatarError = ref("");
 
-function onAvatarChange(event) {
+function fileToDataUrl(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
+async function onAvatarChange(event) {
     const input = event.target;
     const file = input.files?.[0];
 
@@ -29,7 +38,17 @@ function onAvatarChange(event) {
     }
 
     avatarError.value = "";
-    avatarPreviewUrl.value = URL.createObjectURL(file);
+    const dataUrl = await fileToDataUrl(file);
+    avatarPreviewUrl.value = dataUrl;
+}
+
+function onSubmit() {
+    if (avatarPreviewUrl.value) {
+        sessionStorage.setItem("conferenceTicketAvatar", avatarPreviewUrl.value);
+    }
+    else {
+        sessionStorage.removeItem("conferenceTicketAvatar");
+    }
 }
 </script>
 
@@ -41,7 +60,7 @@ function onAvatarChange(event) {
                 <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
                 <p>Secure your spot at next year's biggest coding conference.</p>
             </div>
-            <form action="/conferenceTicket/success">
+            <form action="/conferenceTicket/success" @submit="onSubmit">
                 <label for="file">Upload avatar</label>
                 <input
                     id="file"
@@ -63,6 +82,7 @@ function onAvatarChange(event) {
                     id="text"
                     type="text"
                     name="name"
+                    maxlength="30"
                 >
 
                 <label for="">Email address</label>
@@ -71,6 +91,7 @@ function onAvatarChange(event) {
                     type="email"
                     name="email"
                     placeholder="example@email.com"
+                    maxlength="30"
                 >
 
                 <label for="">Github username</label>
@@ -79,6 +100,7 @@ function onAvatarChange(event) {
                     type="text"
                     name="github"
                     placeholder="@yourusername"
+                    maxlength="30"
                 >
 
                 <button class="tester">
@@ -109,12 +131,12 @@ li {
         url(/assets/images/conf/pattern-squiggly-line-bottom-desktop.svg), url(/assets/images/conf/pattern-lines.svg),
         url(/assets/images/conf/pattern-circle.svg), url(/assets/images/conf/background-desktop.png);
 
-    background-repeat: no-repeat, no-repeat, repeat, no-repeat, no-repeat;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 
     background-position:
         top 70px right,
         bottom left,
-        center,
+        top,
         center right 220px,
         center;
 
