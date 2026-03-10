@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 const avatarPreviewUrl = ref(null);
 const avatarError = ref("");
+const mailError = ref("");
 
 function fileToDataUrl(file) {
     return new Promise((resolve, reject) => {
@@ -42,14 +43,38 @@ async function onAvatarChange(event) {
     avatarPreviewUrl.value = dataUrl;
 }
 
-function onSubmit() {
+function onSubmit(event) {
     if (avatarPreviewUrl.value) {
         sessionStorage.setItem("conferenceTicketAvatar", avatarPreviewUrl.value);
     }
     else {
         sessionStorage.removeItem("conferenceTicketAvatar");
     }
+
+    const emailInput = document.querySelector("input[name=\"email\"]");
+    const emailRegex = /^[^\s@]+@[^\s@][^\s.@]*\.[^\s@]+$/;
+
+    if (!emailInput.value || !emailRegex.test(emailInput.value)) {
+        mailError.value = "Please enter a valid email address";
+        event.preventDefault();
+        return;
+    }
+
+    mailError.value = "";
+    event.target.submit();
 }
+
+// async function inputError(event) {
+//     const input = event.target;
+//     const emailRegex = /^[^\s@]+@[^\s@][^\s.@]*\.[^\s@]+$/;
+
+//     if (input.value === "" || !emailRegex.test(input.value)) {
+//         mailError.value = "Please enter a valid email address";
+//     }
+//     else {
+//         mailError.value = "";
+//     }
+// }
 </script>
 
 <template>
@@ -60,7 +85,7 @@ function onSubmit() {
                 <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
                 <p>Secure your spot at next year's biggest coding conference.</p>
             </div>
-            <form action="/conferenceTicket/success" @submit="onSubmit">
+            <form action="/conferenceTicket/success" @submit.prevent="onSubmit">
                 <label for="file">Upload avatar</label>
                 <input
                     id="file"
@@ -93,6 +118,9 @@ function onSubmit() {
                     placeholder="example@email.com"
                     maxlength="30"
                 >
+                <p v-if="mailError" class="mailError">
+                    {{ mailError }}
+                </p>
 
                 <label for="">Github username</label>
                 <input
@@ -271,6 +299,12 @@ input[type="file"]::file-selector-button {
 }
 
 .avatarError {
+    margin-top: 8px;
+    color: hsl(7, 88%, 67%);
+    font-size: 12px;
+}
+
+.mailError {
     margin-top: 8px;
     color: hsl(7, 88%, 67%);
     font-size: 12px;
