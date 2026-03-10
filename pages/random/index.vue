@@ -1,35 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 
-const a = ref(true);
-const b = ref(false);
-const c = ref(false);
+const selectedTab = ref("a");
 
-function clickOne() {
-    a.value = !a.value;
-    b.value = false;
-    c.value = false;
-    if (a.value === false) {
-        a.value = true;
-    }
-}
-
-function clickTwo() {
-    b.value = !b.value;
-    a.value = false;
-    c.value = false;
-    if (b.value === false) {
-        b.value = true;
-    }
-}
-
-function clickThree() {
-    c.value = !c.value;
-    a.value = false;
-    b.value = false;
-    if (c.value === false) {
-        c.value = true;
-    }
+function onClick(tab: string) {
+    selectedTab.value = tab;
 }
 </script>
 
@@ -37,24 +12,33 @@ function clickThree() {
     <div class="wrapper">
         <div class="box">
             <div class="buttonWrap">
-                <button :class="{ open: a }" @click="clickOne()">
+                <button
+                    :class="{ open: selectedTab === 'a' }"
+                    @click="onClick('a')"
+                >
                     a
                 </button>
-                <button :class="{ open: b }" @click="clickTwo()">
+                <button
+                    :class="{ open: selectedTab === 'b' }"
+                    @click="onClick('b')"
+                >
                     b
                 </button>
-                <button :class="{ open: c }" @click="clickThree()">
+                <button
+                    :class="{ open: selectedTab === 'c' }"
+                    @click="onClick('c')"
+                >
                     c
                 </button>
             </div>
             <div class="contentWrap">
-                <div v-if="a">
+                <div v-if="selectedTab === 'a'">
                     a
                 </div>
-                <div v-if="b">
+                <div v-if="selectedTab === 'b'">
                     b
                 </div>
-                <div v-if="c">
+                <div v-if="selectedTab === 'c'">
                     c
                 </div>
             </div>
