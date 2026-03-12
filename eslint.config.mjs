@@ -29,8 +29,6 @@ export default withNuxt(antfu({
         "ts/no-redeclare": "off",
         "no-console": "off",
         "antfu/no-top-level-await": "off",
-        "node/no-process-env": ["error"],
-        "node/prefer-global/process": ["off"],
         "perfectionist/sort-imports": ["error", {
             type: "natural",
             order: "asc",
