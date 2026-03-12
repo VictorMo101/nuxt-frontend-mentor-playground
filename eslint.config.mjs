@@ -13,9 +13,11 @@ export default withNuxt(antfu({
         semi: true,
         quotes: "double",
     },
-    ignores: ["**/migrations/*", "**/*.md"],
+    ignores: ["**/*.md"],
 }, {
     rules: {
+        "func-style": "off",
+        "antfu/top-level-function": "off",
         "vue/max-attributes-per-line": ["error", {
             singleline: {
                 max: 2,
@@ -24,10 +26,11 @@ export default withNuxt(antfu({
                 max: 1,
             },
         }],
+        "vue/html-self-closing": "off",
         "ts/no-redeclare": "off",
         "ts/consistent-type-definitions": ["error", "type"],
         "no-console": "off",
-        "antfu/no-top-level-await": ["off"],
+        "antfu/no-top-level-await": "off",
         "node/no-process-env": ["error"],
         "node/prefer-global/process": ["off"],
         "perfectionist/sort-imports": ["error", {
