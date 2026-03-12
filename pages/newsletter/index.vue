@@ -92,7 +92,7 @@ li {
     max-width: 1000px;
     background-color: #fff;
     border-radius: 28px;
-    margin: 20px;
+    margin: 60px 20px 20px 20px;
 
     display: grid;
     grid-template-columns: repeat(12, 1fr);
