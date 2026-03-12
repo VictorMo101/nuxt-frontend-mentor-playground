@@ -16,7 +16,6 @@ export default withNuxt(antfu({
     ignores: ["**/*.md"],
 }, {
     rules: {
-        "func-style": "off",
         "antfu/top-level-function": "off",
         "vue/max-attributes-per-line": ["error", {
             singleline: {
@@ -28,7 +27,6 @@ export default withNuxt(antfu({
         }],
         "vue/html-self-closing": "off",
         "ts/no-redeclare": "off",
-        "ts/consistent-type-definitions": ["error", "type"],
         "no-console": "off",
         "antfu/no-top-level-await": "off",
         "node/no-process-env": ["error"],
