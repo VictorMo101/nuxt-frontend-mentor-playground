@@ -17,14 +17,7 @@ export default withNuxt(antfu({
 }, {
     rules: {
         "antfu/top-level-function": "off",
-        "vue/max-attributes-per-line": ["error", {
-            singleline: {
-                max: 2,
-            },
-            multiline: {
-                max: 1,
-            },
-        }],
+        "vue/max-attributes-per-line": ["off"],
         "vue/html-self-closing": "off",
         "vue/require-v-for-key": "off",
         "ts/no-redeclare": "off",
