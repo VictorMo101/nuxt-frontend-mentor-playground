@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import data from "/data.json" with { type: "json" };
 import logoDark from "/public/browext/icon-moon.svg";
@@ -22,10 +22,9 @@ const filteredExtensions = computed(() => {
     return extensions.value;
 });
 
-// const remove = ref(false);
-// const removeClick = () => {
-//     remove.value = !remove.value;
-// };
+const removeClick = (name) => {
+    extensions.value = extensions.value.filter(item => item.name !== name);
+};
 </script>
 
 <template>
@@ -67,7 +66,7 @@ const filteredExtensions = computed(() => {
                     <span class="upperText"><h2>{{ item.name }}</h2><p>{{ item.description }}</p></span>
                 </div>
                 <div class="lowerExtension">
-                    <button class="removeButton" @click="removeClick">
+                    <button class="removeButton" @click="removeClick(item.name)">
                         Remove
                     </button>
 
@@ -91,14 +90,16 @@ button {
 
 .wrapper {
     height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background: linear-gradient(180deg, #040918 0%, #091540 100%);
     .actions {
         margin-top: 120px;
-        width: 1200px;
+        max-width: 1200px;
+        width: 100%;
+        padding: 0 20px 0 20px;
         .topBar {
             display: flex;
             justify-content: space-between;
@@ -122,11 +123,12 @@ button {
             }
         }
         .sort {
+            margin: 40px 0 20px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            width: 100%;
+            max-width: 100%;
             min-height: 60px;
             font-size: clamp(20px, 3vw, 32px);
             font-weight: 600;
@@ -192,16 +194,20 @@ button {
         }
     }
     .extensionWrapper {
-        width: 1200px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(240px, 1fr));
+        justify-items: center;
+        gap: 14px;
+        max-width: 1200px;
+        width: 100%;
+        padding: 0 20px 0 20px;
+
         .extensions {
             display: grid;
             grid-template-rows: 82% 18%;
             height: 240px;
-            width: 390px;
+            min-width: 200px;
+            width: 100%;
             background-color: hsl(226, 25%, 17%);
             border: 1px solid hsl(226, 11%, 37%);
             border-radius: 18px;
