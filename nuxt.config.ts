@@ -12,7 +12,12 @@ export default defineNuxtConfig({
             },
         },
     },
-    modules: ["@nuxt/eslint"],
+
+    modules: ["@nuxt/eslint", "nuxt-svgo"],
+    svgo: {
+        autoImportPath: "./assets/images/browext/",
+    },
+
     eslint: {
         config: {
             standalone: false,

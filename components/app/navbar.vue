@@ -28,6 +28,9 @@ function burger() {
         <NuxtLink href="/advice">
             <p>advice</p>
         </NuxtLink>
+        <NuxtLink href="/browserExtension">
+            <p>browser extension</p>
+        </NuxtLink>
     </div>
     <div class="mobileHeaderWrap">
         <button @click="burger">

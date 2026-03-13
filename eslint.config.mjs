@@ -26,6 +26,7 @@ export default withNuxt(antfu({
             },
         }],
         "vue/html-self-closing": "off",
+        "vue/require-v-for-key": "off",
         "ts/no-redeclare": "off",
         "no-console": "off",
         "antfu/no-top-level-await": "off",
