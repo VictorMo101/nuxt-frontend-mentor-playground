@@ -6,6 +6,22 @@ import logoDark from "/public/browext/icon-moon.svg";
 import logoLight from "/public/browext/icon-sun.svg";
 import logoIcon from "/public/browext/logo.svg";
 
+const light = ref(false);
+const themeSwitch = () => {
+    light.value = !light.value;
+};
+
+const checkValue = ref("all");
+const extensions = ref(data.map(item => ({ ...item })));
+
+const filteredExtensions = computed(() => {
+    if (checkValue.value === "active")
+        return extensions.value.filter(i => i.isActive);
+    if (checkValue.value === "inactive")
+        return extensions.value.filter(i => !i.isActive);
+    return extensions.value;
+});
+
 // const remove = ref(false);
 // const removeClick = () => {
 //     remove.value = !remove.value;
@@ -17,33 +33,35 @@ import logoIcon from "/public/browext/logo.svg";
         <div class="actions">
             <div class="topBar">
                 <img :src="logoIcon" alt="" class="logo">
-                <div class="lightDark">
-                    <img v-if="light" :src="logoDark" alt="">
-                    <img v-if="!light" :src="logoLight" alt="">
+                <div class="lightDark" @click="themeSwitch">
+                    <Transition name="icon-fade" mode="out-in">
+                        <img v-if="light" :src="logoDark" alt="">
+                        <img v-else :src="logoLight" alt="">
+                    </Transition>
                 </div>
             </div>
             <div class="sort">
                 <p>Extensions List</p>
                 <div>
                     <label class="allCheck">
-                        <input type="radio" name="statusFilter" checked>
+                        <input v-model="checkValue" value="all" type="radio" name="checkValue" checked>
                         <span class="all">All</span>
                     </label>
 
                     <label class="activeCheck">
-                        <input type="radio" name="statusFilter">
+                        <input v-model="checkValue" value="active" type="radio" name="checkValue">
                         <span class="active">Active</span>
                     </label>
 
                     <label class="inactiveCheck">
-                        <input type="radio" name="statusFilter">
+                        <input v-model="checkValue" value="inactive" type="radio" name="checkValue">
                         <span class="inactive">Inactive</span>
                     </label>
                 </div>
             </div>
         </div>
         <div class="extensionWrapper">
-            <div v-for="item in data" :key="item.name" class="extensions">
+            <div v-for="item in filteredExtensions" :key="item.name" class="extensions">
                 <div class="upperExtensions">
                     <img :src="item.logo" :alt="item.name" class="icons" />
                     <span class="upperText"><h2>{{ item.name }}</h2><p>{{ item.description }}</p></span>
@@ -54,7 +72,7 @@ import logoIcon from "/public/browext/logo.svg";
                     </button>
 
                     <label class="switch">
-                        <input type="checkbox" role="switch" :checked="item.isActive" />
+                        <input v-model="item.isActive" type="checkbox" role="switch" />
                         <span class="slider"></span>
                     </label>
                 </div>
@@ -100,6 +118,7 @@ button {
                 align-items: center;
                 background-color: hsl(225, 23%, 24%);
                 border-radius: 18px;
+                cursor: pointer;
             }
         }
         .sort {
@@ -269,5 +288,14 @@ button {
             }
         }
     }
+}
+
+.icon-fade-enter-active,
+.icon-fade-leave-active {
+    transition: opacity 0.15s ease;
+}
+.icon-fade-enter-from,
+.icon-fade-leave-to {
+    opacity: 0;
 }
 </style>
